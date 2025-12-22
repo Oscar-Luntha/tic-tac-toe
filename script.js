@@ -15,3 +15,10 @@ const GameBoard = (function (){
 function createPLayer (playerName, playerMark){
     return{playerName , playerMark}
 }
+const GameController = ( function(){
+    const player1 = createPLayer("player1","X")
+    const player2 = createPLayer("player2","O")
+    const playRound = () => {
+        
+    }
+})();
