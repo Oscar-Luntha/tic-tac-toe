@@ -11,3 +11,7 @@ const GameBoard = (function (){
         [2, 4, 6],
     ]
 })();
+
+function createPLayer (playerName, playerMark){
+    return{playerName , playerMark}
+}
