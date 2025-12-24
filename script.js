@@ -28,6 +28,12 @@ const GameBoard = (function (){
     }
     return null;
     };
+    const placeMark = (index, mark) => {
+    if (!isValidMove(index)) return false;
+    board[index] = mark;
+    return true;
+    };
+
 
 })();
 
