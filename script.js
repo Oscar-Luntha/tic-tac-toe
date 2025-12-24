@@ -1,3 +1,4 @@
+let roundCount = 0;
 const GameBoard = (function (){
     const board = new Array(9)
     const winningCombos = [
@@ -10,6 +11,11 @@ const GameBoard = (function (){
         [0, 4, 8],
         [2, 4, 6],
     ]
+    const isValidMove = (index) => {
+    return index >= 0 && index < board.length && board[index] === null;
+    };
+    const updateBoard = (index, marker) => board[index] = marker
+    return{board, isValidMove, updateBoard}
 })();
 
 function createPLayer (playerName, playerMark){
@@ -18,7 +24,12 @@ function createPLayer (playerName, playerMark){
 const GameController = ( function(){
     const player1 = createPLayer("player1","X")
     const player2 = createPLayer("player2","O")
-    const playRound = () => {
-        
+    let activePlayer = player1 ? player2 : player1
+    
+    let index = 0;
+    function placeMarker(index){
+        if(GameBoard.isValidMove(index)){
+            GameBoard.updateBoard(index, activePlayer.playerMark )
+        }
     }
 })();
