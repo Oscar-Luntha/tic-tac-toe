@@ -34,6 +34,15 @@ const GameBoard = (function (){
     return true;
     };
 
+    const isBoardFull = () => board.every(cell => cell !== null);
+    const getBoard = () => { return [...board]; };
+
+    const getGameStatus = () => {
+    const winner = checkWinner();
+    if (winner) return { winner };
+    if (isBoardFull()) return { tie: true };
+    return { ongoing: true };
+  };
 
 })();
 
