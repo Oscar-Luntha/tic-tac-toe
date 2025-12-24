@@ -92,20 +92,24 @@ const gameController = ( function(){
 
 })();
 const displayController = (function () {
-    const boardContainer = document.querySelector(".board");
-    const renderBoard = () => {
-        boardContainer.innerHTML = "";
-        const board = gameBoard.getBoard();
-        board.forEach((cell, index) => {
+  const boardContainer = document.querySelector(".board");
+  const renderBoard = () => {
+    boardContainer.innerHTML = "";
+    const board = gameBoard.getBoard();
+    board.forEach((cell, index) => {
         const cellElement = document.createElement("div");
         cellElement.classList.add("cell");
         cellElement.textContent = cell;
-
-        boardContainer.appendChild(cellElement);
+        cellElement.addEventListener("click", () => {
+          gameController.playMove(index);
+          renderBoard();
         });
-    };
+        boardContainer.appendChild(cellElement);
+    });
+  };
 
-    return {
-        renderBoard,
-    };
+  return {
+    renderBoard,
+  };
 })();
+
