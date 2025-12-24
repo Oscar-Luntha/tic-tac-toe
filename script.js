@@ -80,5 +80,14 @@ const GameController = ( function(){
         }
         switchPlayerTurn();
     };
+    const getActivePlayer = () => activePlayer;
+    const isGameOver = () => gameOver;
+
+    return {
+        startGame,
+        playMove,
+        getActivePlayer,
+        isGameOver,
+    };
 
 })();
