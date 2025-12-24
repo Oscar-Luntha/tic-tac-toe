@@ -12,10 +12,23 @@ const GameBoard = (function (){
         [2, 4, 6],
     ]
     const isValidMove = (index) => {
-    return index >= 0 && index < board.length && board[index] === null;
+        return index >= 0 && index < board.length && board[index] === null;
     };
-    const updateBoard = (index, marker) => board[index] = marker
-    return{board, isValidMove, updateBoard}
+
+    const checkWinner = () => {
+    for (const combo of winningCombos) {
+        const [a, b, c] = combo;
+        if (
+        board[a] &&
+        board[a] === board[b] &&
+        board[a] === board[c]
+        ) {
+        return board[a]; 
+        }
+    }
+    return null;
+    };
+
 })();
 
 function createPLayer (playerName, playerMark){
