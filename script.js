@@ -63,15 +63,22 @@ const GameController = ( function(){
       activePlayer = activePlayer === players[0] ? players[1] : players[0];
     };
 
-
     const startGame = (playerOneName, playerTwoName) => {
-    players = [
-      createPLayer(playerOneName, "X"),
-      createPLayer(playerTwoName, "O"),
-    ];
+        players = [ createPLayer(playerOneName, "X"), createPLayer(playerTwoName, "O")];
+        activePlayer = players[0];
+        gameOver = false;
+        gameBoard.reset();
+    };
+    const playMove = (index) => {
+        if (gameOver) return;
+        const movePlaced = gameBoard.placeMark(index,activePlayer.playerMark);
+        if (!movePlaced) return;
+        const status = gameBoard.getGameStatus();
+        if (status.winner || status.tie) {
+            gameOver = true;
+            return;
+        }
+        switchPlayerTurn();
+    };
 
-    activePlayer = players[0];
-    gameOver = false;
-    gameBoard.reset();
-  };
 })();
