@@ -1,5 +1,5 @@
 let roundCount = 0;
-const GameBoard = (function (){
+const gameBoard = (function (){
     const board = new Array(9)
     const winningCombos = [
         [0, 1, 2],
@@ -54,7 +54,7 @@ const GameBoard = (function (){
 function createPLayer (playerName, playerMark){
     return{playerName , playerMark}
 }
-const GameController = ( function(){
+const gameController = ( function(){
     let players = [];
     let activePlayer = null;
     let gameOver = false;
@@ -90,4 +90,22 @@ const GameController = ( function(){
         isGameOver,
     };
 
+})();
+const displayController = (function () {
+    const boardContainer = document.querySelector(".board");
+    const renderBoard = () => {
+        boardContainer.innerHTML = "";
+        const board = gameBoard.getBoard();
+        board.forEach((cell, index) => {
+        const cellElement = document.createElement("div");
+        cellElement.classList.add("cell");
+        cellElement.textContent = cell;
+
+        boardContainer.appendChild(cellElement);
+        });
+    };
+
+    return {
+        renderBoard,
+    };
 })();
