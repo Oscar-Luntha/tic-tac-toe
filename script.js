@@ -57,7 +57,13 @@ function createPLayer (playerName, playerMark){
 const GameController = ( function(){
     let players = [];
     let activePlayer = null;
-    let gameOver = false; 
+    let gameOver = false;
+    
+    const switchPlayerTurn = () => {
+      activePlayer = activePlayer === players[0] ? players[1] : players[0];
+    };
+
+
     const startGame = (playerOneName, playerTwoName) => {
     players = [
       createPLayer(playerOneName, "X"),
