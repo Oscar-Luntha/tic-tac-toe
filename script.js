@@ -42,7 +42,12 @@ const GameBoard = (function (){
     if (winner) return { winner };
     if (isBoardFull()) return { tie: true };
     return { ongoing: true };
-  };
+    };
+
+    const reset = () => {
+        board.fill(null);
+    };
+    return { placeMark, getBoard, getGameStatus,reset,};
 
 })();
 
