@@ -55,14 +55,17 @@ function createPLayer (playerName, playerMark){
     return{playerName , playerMark}
 }
 const GameController = ( function(){
-    const player1 = createPLayer("player1","X")
-    const player2 = createPLayer("player2","O")
-    let activePlayer = player1 ? player2 : player1
-    
-    let index = 0;
-    function placeMarker(index){
-        if(GameBoard.isValidMove(index)){
-            GameBoard.updateBoard(index, activePlayer.playerMark )
-        }
-    }
+    let players = [];
+    let activePlayer = null;
+    let gameOver = false; 
+    const startGame = (playerOneName, playerTwoName) => {
+    players = [
+      createPLayer(playerOneName, "X"),
+      createPLayer(playerTwoName, "O"),
+    ];
+
+    activePlayer = players[0];
+    gameOver = false;
+    gameBoard.reset();
+  };
 })();
